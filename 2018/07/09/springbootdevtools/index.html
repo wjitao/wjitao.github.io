@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Oracle," />
+  <meta name="keywords" content="Spring Boot," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="当多人同时操作oracle数据库的同一张表的时候，如频繁使用for update，经常会造成锁表现象，这时需要手动进行解锁。首先：先看下那些表被锁住，sql如下：12345678910--1,select b.owner, b.object_name, a.session_id, a.locked_mode  from v$locked_object a, dba_objects b where">
-<meta name="keywords" content="Oracle">
+<meta name="description" content="使用intellij idea构建的spring boot工程默认不能热部署，每次修改了代码之后，还要重启服务器，现将开发过程中使用的热部署总结如下： (1) 添加devtools依赖在pom.xml中加入如下123456#&amp;lt;!--热部署 --&amp;gt;&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;">
+<meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle数据库锁表解决办法">
-<meta property="og:url" content="http://yoursite.com/2018/06/22/mySecondBlog/index.html">
+<meta property="og:title" content="SpringBoot通过devtools实现热部署">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/springbootdevtools/index.html">
 <meta property="og:site_name" content="Jitao&#39;s Blog">
-<meta property="og:description" content="当多人同时操作oracle数据库的同一张表的时候，如频繁使用for update，经常会造成锁表现象，这时需要手动进行解锁。首先：先看下那些表被锁住，sql如下：12345678910--1,select b.owner, b.object_name, a.session_id, a.locked_mode  from v$locked_object a, dba_objects b where">
+<meta property="og:description" content="使用intellij idea构建的spring boot工程默认不能热部署，每次修改了代码之后，还要重启服务器，现将开发过程中使用的热部署总结如下： (1) 添加devtools依赖在pom.xml中加入如下123456#&amp;lt;!--热部署 --&amp;gt;&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-22T09:54:31.636Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/springbootdevtools/deploy_01.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/springbootdevtools/deploy_02.jpg">
+<meta property="og:updated_time" content="2018-07-09T02:02:50.412Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle数据库锁表解决办法">
-<meta name="twitter:description" content="当多人同时操作oracle数据库的同一张表的时候，如频繁使用for update，经常会造成锁表现象，这时需要手动进行解锁。首先：先看下那些表被锁住，sql如下：12345678910--1,select b.owner, b.object_name, a.session_id, a.locked_mode  from v$locked_object a, dba_objects b where">
+<meta name="twitter:title" content="SpringBoot通过devtools实现热部署">
+<meta name="twitter:description" content="使用intellij idea构建的spring boot工程默认不能热部署，每次修改了代码之后，还要重启服务器，现将开发过程中使用的热部署总结如下： (1) 添加devtools依赖在pom.xml中加入如下123456#&amp;lt;!--热部署 --&amp;gt;&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/09/springbootdevtools/deploy_01.jpg">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/22/mySecondBlog/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/09/springbootdevtools/"/>
 
 
 
 
 
-  <title>Oracle数据库锁表解决办法 | Jitao's Blog</title>
+  <title>SpringBoot通过devtools实现热部署 | Jitao's Blog</title>
   
 
 
@@ -263,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/mySecondBlog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/09/springbootdevtools/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wang Jitao">
@@ -280,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Oracle数据库锁表解决办法</h1>
+          <h1 class="post-title" itemprop="name headline">SpringBoot通过devtools实现热部署</h1>
         
 
         <div class="post-meta">
@@ -292,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T16:18:07+08:00">
-                2018-06-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-09T09:24:01+08:00">
+                2018-07-09
               </time>
             
 
@@ -315,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">Oracle</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -352,15 +355,11 @@
       
 
       
-        <p>当多人同时操作oracle数据库的同一张表的时候，如频繁使用for update，经常会造成锁表现象，这时需要手动进行解锁。<br>首先：先看下那些表被锁住，sql如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--1,</span><br><span class="line">select b.owner, b.object_name, a.session_id, a.locked_mode</span><br><span class="line">  from v<span class="variable">$locked_object</span> a, dba_objects b</span><br><span class="line"> <span class="built_in">where</span> b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">--2,</span><br><span class="line">select b.username, b.sid, b.serial<span class="comment">#, logon_time</span></span><br><span class="line">  from v<span class="variable">$locked_object</span> a, v<span class="variable">$session</span> b</span><br><span class="line"> <span class="built_in">where</span> a.session_id = b.sid</span><br><span class="line"> order by b.logon_time;</span><br></pre></td></tr></table></figure></p>
-<p>然后：杀死进程中的会话，sql如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter system <span class="built_in">kill</span> session <span class="string">'sid,serial#'</span>;</span><br></pre></td></tr></table></figure>
-<p>举例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter system <span class="built_in">kill</span> session <span class="string">'29,5497'</span>;</span><br></pre></td></tr></table></figure>
-<p>其中29指第一条sql中sid列内容，5497指第二条sql中serial#列内容。</p>
-<p>为了方便使用，对sql进行了优化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select <span class="string">' alter system kill session '</span><span class="string">''</span>||b.sid||<span class="string">','</span>||b.serial<span class="comment">#||''' ;',logon_time</span></span><br><span class="line">from v<span class="variable">$locked_object</span> a,v<span class="variable">$session</span> b</span><br><span class="line"><span class="built_in">where</span> a.session_id = b.sid order by b.logon_time;</span><br></pre></td></tr></table></figure>
-<p>将查询结果复制，执行即可</p>
+        <p>使用intellij idea构建的spring boot工程默认不能热部署，每次修改了代码之后，还要重启服务器，现将开发过程中使用的热部署总结如下：</p>
+<h6 id="1-添加devtools依赖"><a href="#1-添加devtools依赖" class="headerlink" title="(1) 添加devtools依赖"></a>(1) 添加devtools依赖</h6><p>在pom.xml中加入如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&lt;!--热部署 --&gt;</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">	&lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<h6 id="2-修改配置application-yml配置文件"><a href="#2-修改配置application-yml配置文件" class="headerlink" title="(2) 修改配置application.yml配置文件"></a>(2) 修改配置application.yml配置文件</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  thymeleaf:</span><br><span class="line">    <span class="comment">#页面缓存</span></span><br><span class="line">    cache: <span class="literal">true</span></span><br><span class="line">  devtools:</span><br><span class="line">    restart:</span><br><span class="line">      <span class="comment">#热部署生效</span></span><br><span class="line">      enabled: <span class="literal">true</span></span><br><span class="line">      <span class="comment">#设置重启目录</span></span><br><span class="line">      additional-paths: src/main/java</span><br></pre></td></tr></table></figure>
+<h6 id="3-修改idea配置"><a href="#3-修改idea配置" class="headerlink" title="(3) 修改idea配置"></a>(3) 修改idea配置</h6><p>点击&gt;&gt;File&gt;&gt;setting&gt;&gt;Build,Execution,Deployment<br><img src="/2018/07/09/springbootdevtools/deploy_01.jpg" alt="aaaaabbb"></p>
+<h6 id="4-修改idea配置"><a href="#4-修改idea配置" class="headerlink" title="(4) 修改idea配置"></a>(4) 修改idea配置</h6><p>使用快捷键：“Shift+Ctrl+Alt+/” ，选择 “Registry” ，选中打勾 “compiler.automake.allow.when.app.running”<br><img src="/2018/07/09/springbootdevtools/deploy_02.jpg" alt="aaaaabbb"><br>至此热部署完成</p>
 
       
     </div>
@@ -378,7 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
         </div>
       
@@ -391,15 +390,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/01/oracleerror/" rel="next" title="oracle报错及解决">
+                <i class="fa fa-chevron-left"></i> oracle报错及解决
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/23/dockerbuild/" rel="prev" title="docker自定义tomcat镜像">
-                docker自定义tomcat镜像 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -451,8 +450,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -512,6 +520,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-添加devtools依赖"><span class="nav-number">1.</span> <span class="nav-text">(1) 添加devtools依赖</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-修改配置application-yml配置文件"><span class="nav-number">2.</span> <span class="nav-text">(2) 修改配置application.yml配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-修改idea配置"><span class="nav-number">3.</span> <span class="nav-text">(3) 修改idea配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-修改idea配置"><span class="nav-number">4.</span> <span class="nav-text">(4) 修改idea配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
