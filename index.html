@@ -355,15 +355,16 @@
       
         
           
-            <p>由于版权问题，在maven的官网上没有oracle的驱动包，如果想使用oracle作为maven的项目的数据库，需要安装oracle的jar包到本地仓库。<br>本次以oracle6.jar为例，版本号为11.1.0.7.0</p>
-<h6 id="1-官网下载oracle的驱动包到本地"><a href="#1-官网下载oracle的驱动包到本地" class="headerlink" title="(1) 官网下载oracle的驱动包到本地"></a>(1) 官网下载oracle的驱动包到本地</h6><p><a href="http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-111060-084321.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-111060-084321.html</a></p>
-<p><img src="/2018/07/16/mavenerror/mavenerror_01.jpg" alt="aaaaabbb"></p>
-<h6 id="2-dos命令进入到jar包所在的文件夹"><a href="#2-dos命令进入到jar包所在的文件夹" class="headerlink" title="(2) dos命令进入到jar包所在的文件夹"></a>(2) dos命令进入到jar包所在的文件夹</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.1.0.7.0 -Dpackaging=jar -Dfile=ojdbc6.jar</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/16/mavenerror/mavenerror_02.jpg" alt="aaaaabbb"></p>
-<h6 id="3-查看本地仓库"><a href="#3-查看本地仓库" class="headerlink" title="(3) 查看本地仓库"></a>(3) 查看本地仓库</h6><p>此时oracle的驱动包已经安装到本地仓库了。<br>pom.xml的引用如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.oracle&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;ojdbc6&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;11.1.0.7.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/07/16/mavenerror/mavenerror_03.jpg" alt="aaaaabbb"></p>
-
-          
+          由于版权问题，在maven的官网上没有oracle的驱动包，如果想使用oracle作为maven的项目的数据库，需要安装oracle的jar包到本地仓库。本次以oracle6.jar为例，版本号为11.1.0.7.0
+(1) 官网下载oracle的驱动包到本地http://www.oracle.co
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/mavenerror/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -503,8 +504,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/15/socketbase/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -644,13 +652,16 @@
       
         
           
-            <p>使用intellij idea构建的spring boot工程默认不能热部署，每次修改了代码之后，还要重启服务器，现将开发过程中使用的热部署总结如下：</p>
-<h6 id="1-添加devtools依赖"><a href="#1-添加devtools依赖" class="headerlink" title="(1) 添加devtools依赖"></a>(1) 添加devtools依赖</h6><p>在pom.xml中加入如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&lt;!--热部署 --&gt;</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">	&lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<h6 id="2-修改配置application-yml配置文件"><a href="#2-修改配置application-yml配置文件" class="headerlink" title="(2) 修改配置application.yml配置文件"></a>(2) 修改配置application.yml配置文件</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  thymeleaf:</span><br><span class="line">    <span class="comment">#页面缓存</span></span><br><span class="line">    cache: <span class="literal">true</span></span><br><span class="line">  devtools:</span><br><span class="line">    restart:</span><br><span class="line">      <span class="comment">#热部署生效</span></span><br><span class="line">      enabled: <span class="literal">true</span></span><br><span class="line">      <span class="comment">#设置重启目录</span></span><br><span class="line">      additional-paths: src/main/java</span><br></pre></td></tr></table></figure>
-<h6 id="3-修改idea配置"><a href="#3-修改idea配置" class="headerlink" title="(3) 修改idea配置"></a>(3) 修改idea配置</h6><p>点击&gt;&gt;File&gt;&gt;setting&gt;&gt;Build,Execution,Deployment<br><img src="/2018/07/09/springbootdevtools/deploy_01.jpg" alt="aaaaabbb"></p>
-<h6 id="4-修改idea配置"><a href="#4-修改idea配置" class="headerlink" title="(4) 修改idea配置"></a>(4) 修改idea配置</h6><p>使用快捷键：“Shift+Ctrl+Alt+/” ，选择 “Registry” ，选中打勾 “compiler.automake.allow.when.app.running”<br><img src="/2018/07/09/springbootdevtools/deploy_02.jpg" alt="aaaaabbb"><br>至此热部署完成</p>
-
-          
+          使用intellij idea构建的spring boot工程默认不能热部署，每次修改了代码之后，还要重启服务器，现将开发过程中使用的热部署总结如下：
+(1) 添加devtools依赖在pom.xml中加入如下123456#&lt;!--热部署 --&gt;&lt;dependency&gt;	&l
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/09/springbootdevtools/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -790,12 +801,16 @@
       
         
           
-            <p>工作中在使用oracle数据的时候遇到了很多错误，现将平时遇到的错误及解决办法整理如下：</p>
-<h6 id="1-使用用户登录oracle数据库时报错ORA-28040-No-matching-authentication-protocol"><a href="#1-使用用户登录oracle数据库时报错ORA-28040-No-matching-authentication-protocol" class="headerlink" title="(1) 使用用户登录oracle数据库时报错ORA-28040: No matching authentication protocol"></a>(1) 使用用户登录oracle数据库时报错ORA-28040: No matching authentication protocol</h6><p>  这是应为使用较低版本的oracle客户端访问较高版本的oracle数据库，比如：本机安装的oracle为oracle 10g访问目标数据库oracle为oracle 12c<br>  解决办法：找到目标数据库安装目录/home/oracle12c\product\12.2.0\dbhome_1\network\admin\下的sqlnet.ora文件，如果没有此文件，则创建，在文件中添加<br>    SQLNET.ALLOWED_LOGON_VERSION=8<br>    表示允许oracle 8以上的版本访问此数据库。<br>    重启服务，重新连接数据库ok。</p>
-<h6 id="2-执行exp命令导出dmp文件时报错-EXP-00091-Exporting-questionable-statistics"><a href="#2-执行exp命令导出dmp文件时报错-EXP-00091-Exporting-questionable-statistics" class="headerlink" title="(2) 执行exp命令导出dmp文件时报错:EXP-00091: Exporting questionable statistics."></a>(2) 执行exp命令导出dmp文件时报错:EXP-00091: Exporting questionable statistics.</h6><p>  这是由于目标数据库和本机安装的数据库编码不一致导致的。<br>  解决办法：查看目标数据库的字符集：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from nls_database_parameters t <span class="built_in">where</span> t.parameter=<span class="string">'NLS_CHARACTERSET'</span>; </span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">select * from v<span class="variable">$nls_parameters</span>  <span class="built_in">where</span> parameter=<span class="string">'NLS_CHARACTERSET'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>  本机查询 NLS_CHARACTERSET    AL32UTF8<br>  目标服务器查询 NLS_CHARACTERSET    ZHS16GBK<br>  对本机进行字符集设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># linux</span></span><br><span class="line"><span class="built_in">export</span> NLS_LANG=AMERICAN_AMERICA.ZHS16GBK</span><br><span class="line"><span class="comment"># windows</span></span><br><span class="line">cmd&gt;&gt;<span class="built_in">set</span> NLS_LANG=AMERICAN_AMERICA.ZHS16GBK</span><br></pre></td></tr></table></figure></p>
-
-          
+          工作中在使用oracle数据的时候遇到了很多错误，现将平时遇到的错误及解决办法整理如下：
+(1) 使用用户登录oracle数据库时报错ORA-28040: No matching authentication protocol  这是应为使用较低版本的oracle客户端访问较高版本的oracle数据
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/01/oracleerror/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -935,14 +950,16 @@
       
         
           
-            <p>创建用户可以使用管理员用户登录，当然也可以使用普通用户登录，但是使用普通用户登录，只能给新建用户赋予小于等于自己的权限。</p>
-<h6 id="1-创建临时表空间"><a href="#1-创建临时表空间" class="headerlink" title="(1) 创建临时表空间"></a>(1) 创建临时表空间</h6><p>oracle临时表空间主要用来做查询和存放一些缓冲区数据，内存可自动释放<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create temporary tablespace TBS_MYTBS_TEMP</span><br><span class="line">tempfile <span class="string">'D:\tbs_temp_mytbs.dbf'</span> </span><br><span class="line">size 50m  </span><br><span class="line">autoextend on  </span><br><span class="line">next 50m maxsize 2048m  </span><br><span class="line">extent management <span class="built_in">local</span> ;</span><br></pre></td></tr></table></figure></p>
-<h6 id="2-创建数据表空间"><a href="#2-创建数据表空间" class="headerlink" title="(2) 创建数据表空间"></a>(2) 创建数据表空间</h6><p>oracle数据表空间是用来存储表结构、数据、函数、过程、序列等。是随数据库永久存在的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create tablespace TBS_MYTBS </span><br><span class="line">logging  </span><br><span class="line">datafile <span class="string">'D:\tbs_mytbs.dbf'</span></span><br><span class="line">size 50m  </span><br><span class="line">autoextend on  </span><br><span class="line">next 50m maxsize 20480m  </span><br><span class="line">extent management <span class="built_in">local</span> ;</span><br></pre></td></tr></table></figure></p>
-<h6 id="3-创建用户并指定表空间"><a href="#3-创建用户并指定表空间" class="headerlink" title="(3) 创建用户并指定表空间"></a>(3) 创建用户并指定表空间</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--删除用户</span></span><br><span class="line">drop user MYUSER cascade;</span><br><span class="line"><span class="comment">#--创建用户MYUSER密码为1</span></span><br><span class="line">create user MYUSER identified by 1   </span><br><span class="line">default tablespace TBS_MYTBS  </span><br><span class="line">temporary tablespace TBS_MYTBS_TEMP ;</span><br></pre></td></tr></table></figure>
-<h6 id="4-为用户授予权限"><a href="#4-为用户授予权限" class="headerlink" title="(4) 为用户授予权限"></a>(4) 为用户授予权限</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant connect,resource,dba to MYUSER ;</span><br></pre></td></tr></table></figure>
-<p>至此创建用户结束。<br>当然也可以不用创建表空间直接走默认<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--删除用户</span></span><br><span class="line">drop user MYUSER cascade;</span><br><span class="line"><span class="comment">#--创建用户MYUSER密码为1</span></span><br><span class="line">create user MYUSER identified by 1;</span><br><span class="line"><span class="comment">#--授予权限</span></span><br><span class="line">grant connect,resource,dba to MYUSER;</span><br></pre></td></tr></table></figure></p>
-
-          
+          创建用户可以使用管理员用户登录，当然也可以使用普通用户登录，但是使用普通用户登录，只能给新建用户赋予小于等于自己的权限。
+(1) 创建临时表空间oracle临时表空间主要用来做查询和存放一些缓冲区数据，内存可自动释放123456create temporary tablespace TBS_MYTB
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/26/createoracleuser/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1082,20 +1099,16 @@
       
         
           
-            <h6 id="1-此次安装的weblogic12c，版本号为12-1-3-0-0；jdk需要1-7或者以上。此次安装的版本是-jdk1-7-0-80，并配置好环境变量。"><a href="#1-此次安装的weblogic12c，版本号为12-1-3-0-0；jdk需要1-7或者以上。此次安装的版本是-jdk1-7-0-80，并配置好环境变量。" class="headerlink" title="(1) 此次安装的weblogic12c，版本号为12.1.3.0.0；jdk需要1.7或者以上。此次安装的版本是 jdk1.7.0_80，并配置好环境变量。"></a>(1) 此次安装的weblogic12c，版本号为12.1.3.0.0；jdk需要1.7或者以上。此次安装的版本是 jdk1.7.0_80，并配置好环境变量。</h6><p>安装包分别为：jdk-7u80-linux-x64.gz、fmw_12.1.3.0.0_wls.jar</p>
-<h6 id="2-新建用户"><a href="#2-新建用户" class="headerlink" title="(2) 新建用户"></a>(2) 新建用户</h6><p>weblogic不能在root用户下安装，需要新建一个用户weblogic，用户组为web，用户名/密码 weblogic/weblogic<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新建用户组web</span></span><br><span class="line">groupadd web</span><br><span class="line"><span class="comment">#添加用户，并用-g参数来制定 web用户组</span></span><br><span class="line">useradd -g web weblogic</span><br><span class="line"><span class="comment">#设置密码</span></span><br><span class="line">passwd weblogic</span><br></pre></td></tr></table></figure></p>
-<h6 id="3-编写oraInst-loc文件"><a href="#3-编写oraInst-loc文件" class="headerlink" title="(3) 编写oraInst.loc文件"></a>(3) 编写oraInst.loc文件</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inventory_loc=/home/weblogic/oraInventory1</span><br><span class="line">inst_group=web</span><br></pre></td></tr></table></figure>
-<h6 id="4-编写wls-rsp文件"><a href="#4-编写wls-rsp文件" class="headerlink" title="(4) 编写wls.rsp文件"></a>(4) 编写wls.rsp文件</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[ENGINE]</span><br><span class="line"><span class="comment">#DO NOT CHANGE THIS.</span></span><br><span class="line">Response File Version=1.0.0.0.0</span><br><span class="line">[GENERIC]</span><br><span class="line"><span class="comment">#weblogic</span></span><br><span class="line">ORACLE_HOME=/home/weblogic/Oracle/Middleware</span><br><span class="line"><span class="comment">#Set this variable value to the Installation Type selected. e.g. WebLogic Server, Coherence, Complete with Examples.</span></span><br><span class="line">INSTALL_TYPE=WebLogic Server</span><br><span class="line"><span class="comment">#Provide the My Oracle Support Username. If you wish to ignore Oracle Configuration Manager configuration provide empty string for user name.</span></span><br><span class="line">MYORACLESUPPORT_USERNAME=</span><br><span class="line"><span class="comment">#Provide the My Oracle Support Password</span></span><br><span class="line">MYORACLESUPPORT_PASSWORD=</span><br><span class="line"><span class="comment">#Set this to true if you wish to decline the security updates. Setting this to true and providing empty string for My Oracle Support username will ignore the Oracle Configuration Manager configuration</span></span><br><span class="line">DECLINE_SECURITY_UPDATES=<span class="literal">true</span></span><br><span class="line"><span class="comment">#Set this to true if My Oracle Support Password is specified</span></span><br><span class="line">SECURITY_UPDATES_VIA_MYORACLESUPPORT=<span class="literal">false</span></span><br><span class="line"><span class="comment">#Provide the Proxy Host</span></span><br><span class="line">PROXY_HOST=</span><br><span class="line"><span class="comment">#Provide the Proxy Port</span></span><br><span class="line">PROXY_PORT=</span><br><span class="line"><span class="comment">#Provide the Proxy Username</span></span><br><span class="line">PROXY_USER=</span><br><span class="line"><span class="comment">#Provide the Proxy Password</span></span><br><span class="line">PROXY_PWD=</span><br><span class="line"><span class="comment">#Type String (URL format) Indicates the OCM Repeater URL which should be of the format [scheme[Http/Https]]://[repeater host]:[repeater port]</span></span><br><span class="line">COLLECTOR_SUPPORTHUB_URL=</span><br></pre></td></tr></table></figure>
-<h6 id="5-安装"><a href="#5-安装" class="headerlink" title="(5) 安装"></a>(5) 安装</h6><p>执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar fmw_12.1.3.0.0_wls.jar -silent -response /home/weblogic/install/wls.rsp -invPtrLoc /home/weblogic/install/oraInst.loc</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/06/25/weblogicinstall/weblogic_01.jpg" alt="aaaaabbb"><br>说明安装成功</p>
-<h6 id="6-解决创建域慢和进入weblogic控制台慢的问题"><a href="#6-解决创建域慢和进入weblogic控制台慢的问题" class="headerlink" title="(6) 解决创建域慢和进入weblogic控制台慢的问题"></a>(6) 解决创建域慢和进入weblogic控制台慢的问题</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/<span class="built_in">local</span>/jdk/jdk1.7.0_80/jre/lib/security/java.security</span><br><span class="line"><span class="comment">#添加</span></span><br><span class="line">securerandom.source=file:/dev/./urandom</span><br></pre></td></tr></table></figure>
-<h6 id="7-创建域"><a href="#7-创建域" class="headerlink" title="(7) 创建域"></a>(7) 创建域</h6><p>创建参数文件create_domain.rsp,存放在/home/weblogic/install/ 路径下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> template from <span class="string">"/home/weblogic/Oracle/Middleware/wlserver/common/templates/wls/wls.jar"</span>;</span><br><span class="line"><span class="built_in">set</span> JavaHome <span class="string">"/usr/local/jdk/jdk1.7.0_80"</span>;</span><br><span class="line"><span class="built_in">set</span> ServerStartMode <span class="string">"dev"</span>; </span><br><span class="line"></span><br><span class="line">find Server <span class="string">"AdminServer"</span> as AdminServer;</span><br><span class="line"><span class="built_in">set</span> AdminServer.ListenAddress <span class="string">""</span>;</span><br><span class="line"><span class="built_in">set</span> AdminServer.ListenPort <span class="string">"7001"</span>;</span><br><span class="line"><span class="built_in">set</span> AdminServer.SSL.Enabled <span class="string">"true"</span>;</span><br><span class="line"><span class="built_in">set</span> AdminServer.SSL.ListenPort <span class="string">"7002"</span>;</span><br><span class="line"></span><br><span class="line">create Server <span class="string">"base"</span> as BASE;</span><br><span class="line"><span class="built_in">set</span> BASE.ListenAddress <span class="string">""</span>;</span><br><span class="line"><span class="built_in">set</span> BASE.ListenPort <span class="string">"7003"</span>;</span><br><span class="line"></span><br><span class="line">create Machine <span class="string">"base"</span> as Machinename;</span><br><span class="line"></span><br><span class="line">find User <span class="string">"weblogic"</span> as u1;</span><br><span class="line"><span class="built_in">set</span> u1.password <span class="string">"weblogic123"</span>;</span><br><span class="line"></span><br><span class="line">create User <span class="string">"weblogic2"</span> as u2;</span><br><span class="line"><span class="built_in">set</span> u2.password <span class="string">"weblogic123"</span>;</span><br><span class="line">write domain to <span class="string">"/home/weblogic/Oracle/Middleware/user_projects/domains/base_domain/"</span>;</span><br><span class="line">close template;</span><br></pre></td></tr></table></figure></p>
-<p>切换到/home/weblogic/Oracle/Middleware/wlserver/common/bin目录，执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./config.sh -mode=silent -silent_script=/home/weblogic/install/create_domain.rsp -logfile=/home/weblogic/install/create_domain.log</span><br></pre></td></tr></table></figure></p>
-<p>该命令执行时间较长，耐心等待</p>
-<h6 id="8-启动"><a href="#8-启动" class="headerlink" title="(8) 启动"></a>(8) 启动</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/weblogic/Oracle/Middleware/user_projects/domains/base_domain/bin</span><br><span class="line">./startWebLogic.sh</span><br></pre></td></tr></table></figure>
-<h6 id="9-访问"><a href="#9-访问" class="headerlink" title="(9) 访问"></a>(9) 访问</h6><p>在浏览器输入<a href="http://ip:7001/console" target="_blank" rel="noopener">http://ip:7001/console</a><br><img src="/2018/06/25/weblogicinstall/weblogic_02.jpg" alt="aaaaabbb"><br>    到此安装成功，使用weblogic/weblogic123登录即可</p>
-
-          
+          (1) 此次安装的weblogic12c，版本号为12.1.3.0.0；jdk需要1.7或者以上。此次安装的版本是 jdk1.7.0_80，并配置好环境变量。安装包分别为：jdk-7u80-linux-x64.gz、fmw_12.1.3.0.0_wls.jar
+(2) 新建用户weblogic不能在
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/25/weblogicinstall/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1235,8 +1248,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/23/dockerbase/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1376,19 +1396,16 @@
       
         
           
-            <p>(1) Tomcat镜像要依赖一个操作系统，以centos为例，首先要先下载centos镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装centos</span></span><br><span class="line">docker pull centos </span><br><span class="line"><span class="comment">#运行centos</span></span><br><span class="line">docker run -d -i -t centos /bin/bash</span><br></pre></td></tr></table></figure></p>
-<p>(2)创建一个目录用于安装tomcat<br>我的目录为D:\softWare2\dockerToolbox\dockerspace\mytomcat2</p>
-<p>(3)下载jdk，tomcat<br>我下载的版本分别为：<br>jdk-7u80-linux-x64.tar.gz，apache-tomcat-7.0.78.tar.gz<br>存放于mytomcat2目录下</p>
-<p>(4)编写Dockerfile文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#表示该镜像依赖centos镜像</span></span><br><span class="line">FROM centos</span><br><span class="line"><span class="comment">#表示作者信息</span></span><br><span class="line">MAINTAINER wjt 1228108405@qq.com</span><br><span class="line"></span><br><span class="line"><span class="comment">#表示为在centos中建立mysoft、jdk、tomcat三个文件夹</span></span><br><span class="line">RUN mkdir /usr/<span class="built_in">local</span>/mysoft </span><br><span class="line">RUN mkdir /usr/<span class="built_in">local</span>/mysoft/jdk</span><br><span class="line">RUN mkdir /usr/<span class="built_in">local</span>/mysoft/tomcat</span><br><span class="line"></span><br><span class="line"><span class="comment">#表示为将jdk放入jdk文件夹，将tomcat放入tomcat文件夹</span></span><br><span class="line">Add jdk-7u80-linux-x64.tar.gz /usr/<span class="built_in">local</span>/mysoft/jdk</span><br><span class="line">Add apache-tomcat-7.0.78.tar.gz /usr/<span class="built_in">local</span>/mysoft/tomcat</span><br><span class="line"></span><br><span class="line"><span class="comment">#表示设置JAVA_HOME、CATALINA_HOME、PATH环境变量</span></span><br><span class="line">ENV JAVA_HOME /usr/<span class="built_in">local</span>/mysoft/jdk/jdk1.7.0_80</span><br><span class="line">ENV CATALINA_HOME /usr/<span class="built_in">local</span>/mysoft/tomcat/apache-tomcat-7.0.78</span><br><span class="line">ENV PATH <span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$CATALINA_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment">#表示暴露一个8080端口</span></span><br><span class="line">EXPOSE 8080</span><br><span class="line"></span><br><span class="line"><span class="comment">#表示运行时执行此命令</span></span><br><span class="line">CMD [<span class="string">"/usr/local/mysoft/tomcat/apache-tomcat-7.0.78/bin/catalina.sh"</span>,<span class="string">"run"</span>]</span><br></pre></td></tr></table></figure></p>
-<p>(5)构建镜像<br>首先进入存放Dockerfile文件的目录<br><img src="/2018/06/23/dockerbuild/1001.jpg" alt="aaaaabbb"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t images/mytomcat:latest .</span><br></pre></td></tr></table></figure></p>
-<p>images/mytomcat为自定义镜像名称<br><img src="/2018/06/23/dockerbuild/1002.jpg" alt="aaaaabbb"><br><img src="/2018/06/23/dockerbuild/1003.jpg" alt="aaaaabbb"><br>到此，已经完成构建</p>
-<p>(6)查看是否构建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/06/23/dockerbuild/1004.jpg" alt="aaaaabbb"></p>
-<p>(7)运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 8882:8080 -d  images/mytomcat</span><br></pre></td></tr></table></figure></p>
-<p>8882为映射对外可访问端口<br>(8)查看是否运行成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure></p>
-<p>(9)访问<br>在浏览器中输入<a href="http://192.168.99.100:8882/" target="_blank" rel="noopener">http://192.168.99.100:8882/</a><br>如果出现tomcat的首页说明运行成功<br><img src="/2018/06/23/dockerbuild/1006.jpg" alt="aaaaabbb"></p>
-
-          
+          (1) Tomcat镜像要依赖一个操作系统，以centos为例，首先要先下载centos镜像1234#安装centosdocker pull centos #运行centosdocker run -d -i -t centos /bin/bash
+(2)创建一个目录用于安装tomcat我的目录为D:
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/23/dockerbuild/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1528,17 +1545,15 @@
       
         
           
-            <p>当多人同时操作oracle数据库的同一张表的时候，如频繁使用for update，经常会造成锁表现象，这时需要手动进行解锁。<br>首先：先看下那些表被锁住，sql如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--1,</span><br><span class="line">select b.owner, b.object_name, a.session_id, a.locked_mode</span><br><span class="line">  from v<span class="variable">$locked_object</span> a, dba_objects b</span><br><span class="line"> <span class="built_in">where</span> b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">--2,</span><br><span class="line">select b.username, b.sid, b.serial<span class="comment">#, logon_time</span></span><br><span class="line">  from v<span class="variable">$locked_object</span> a, v<span class="variable">$session</span> b</span><br><span class="line"> <span class="built_in">where</span> a.session_id = b.sid</span><br><span class="line"> order by b.logon_time;</span><br></pre></td></tr></table></figure></p>
-<p>然后：杀死进程中的会话，sql如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter system <span class="built_in">kill</span> session <span class="string">'sid,serial#'</span>;</span><br></pre></td></tr></table></figure>
-<p>举例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter system <span class="built_in">kill</span> session <span class="string">'29,5497'</span>;</span><br></pre></td></tr></table></figure>
-<p>其中29指第一条sql中sid列内容，5497指第二条sql中serial#列内容。</p>
-<p>为了方便使用，对sql进行了优化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select <span class="string">' alter system kill session '</span><span class="string">''</span>||b.sid||<span class="string">','</span>||b.serial<span class="comment">#||''' ;',logon_time</span></span><br><span class="line">from v<span class="variable">$locked_object</span> a,v<span class="variable">$session</span> b</span><br><span class="line"><span class="built_in">where</span> a.session_id = b.sid order by b.logon_time;</span><br></pre></td></tr></table></figure>
-<p>将查询结果复制，执行即可</p>
-
-          
+          当多人同时操作oracle数据库的同一张表的时候，如频繁使用for update，经常会造成锁表现象，这时需要手动进行解锁。首先：先看下那些表被锁住，sql如下：12345678910--1,select b.owner, b.object_name, a.session_id, a.locked_
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/22/mySecondBlog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
